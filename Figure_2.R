@@ -3,8 +3,9 @@
    k_blup.kin <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/genomic_kinship_matrix.CSV"),row.names=1)
 
    naive_blup_estimates <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/Naive-BLUP_estimates.csv"),row.names=1)
-   y    <- naive_blup_estimates
-   m.y  <- 
+   y    <- as.matrix(naive_blup_estimates)      # Naive BLUP estimates
+   m.y <- as.matrix(rep(mean(y),length(y)))     # a vector consisting of the averages of Naive BLUP estimates
+
 
    kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) / dim(ginv(t(z) %*% z) %*% t(z) %*% (y - m.y))[1]
 
