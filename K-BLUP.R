@@ -4,16 +4,12 @@
 # Kim, Bongsong, Xinbin Dai, Wenchao Zhang, Zhaohong Zhuang, Darlene L. Sanchez, Thomas Lübberstedt, Yun Kang, Michael K. Udvardi, William D. Beavis, Shizhong Xu*, Patrick X. Zhao* "GWASpro: A High-Performance Genome-Wide Association Analysis Server" Bioinformatics (2018): doi.org/10.1093/bioinformatics/bty989.
 # GWASpro URL: https://bioinfo.noble.org/GWASPRO
 
-
- install.packages("RCurl")                  
- require(RCurl) 
-
- dat <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/pheno.csv"),header=T)           
+ dat <- read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/pheno.csv",header=T)           
  x   <- model.matrix(~1 + as.factor(dat$loc)) 
  y   <- as.matrix(dat[,3])
  z   <- model.matrix(~dat[,1]-1)
               
- kk  <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/genomic_kinship_matrix.CSV"),row.names=1)
+ kk  <- read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/genomic_kinship_matrix.CSV",row.names=1)
  kk  <- kk[match(sort(unique(dat[,1])),rownames(kk)),match(sort(unique(dat[,1])),rownames(kk))] 
 
  id_n <- rownames(kk)
