@@ -1,11 +1,13 @@
 
-  bv    <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/K-BLUP_estimates.csv"),header=T)      
-  g.kin <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/genomic_kinship_matrix.CSV"),row.names=1)
+                                                
+  library(MASS)
+  bv    <- read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/K-BLUP_estimates.csv",header=T)      
+  g.kin <- read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/genomic_kinship_matrix.CSV",row.names=1)
 
-  z <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/z_matrix.csv"),header=T)
+  z <- read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/z_matrix.csv",header=T)
   z <- as.matrix(z)                      # Z matrix 
 
-  y  <- as.matrix(read.csv("./Processed_data/y.csv",header=F))   # phenotypic vector
+  y  <- as.matrix(as.numeric(read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/pheno.csv",header=T)[,3]))   # phenotypic vector
   m.y <- as.matrix(rep(mean(y),dim(y)[1]))                       # a vector containing the phenotypic averages
 
   naive_var_cov <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) / dim(ginv(t(z) %*% z) %*% t(z) %*% (y - m.y))[1]
