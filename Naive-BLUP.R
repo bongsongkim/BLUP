@@ -50,7 +50,6 @@
  
 
   library(MASS)
-  print(Sys.time()) 
   c11 <- t(x)%*%x
   c12 <- t(x)%*%z
   c21 <- t(c12)
