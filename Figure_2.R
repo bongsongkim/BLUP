@@ -3,13 +3,13 @@
   k_blup.kin <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/genomic_kinship_matrix.CSV"),row.names=1)
 
   z <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/z_matrix.csv"),header=T)
-  z <- as.matrix(z)
+  z <- as.matrix(z)                      # Z matrix 
 
-  naive_blup_estimates <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/Naive-BLUP_estimates.csv"),row.names=1)
-  y   <- as.matrix(naive_blup_estimates)      # Naive BLUP estimates
-  m.y <- as.matrix(rep(mean(y),length(y)))    # a vector consisting of the averages of Naive BLUP estimates
+  y  <- as.matrix(read.csv("./Processed_data/y.csv",header=F))   # phenotypic vector
+  m.y <- as.matrix(rep(mean(y),dim(y)[1]))                       # a vector containing the phenotypic averages
 
   kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) / dim(ginv(t(z) %*% z) %*% t(z) %*% (y - m.y))[1]
+   # kk = a kinship matrix of the Naive-BLUP
 
 #  var_cov <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/variance-covariance.csv"),row.names=1)
 
