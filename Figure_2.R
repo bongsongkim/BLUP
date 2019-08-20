@@ -25,4 +25,4 @@
        vec_1[cnt] <- naive_var_cov[i,j]
        vec_2[cnt] <- k_blup_var_cov[i,j]
   }}
-  plot(vec_1,vec_2,xlab="Var(u) calculated by Equation 7",ylab="Var(u) calculated by λK")
+  plot(vec_1,vec_2,xlab="Var(u) calculated by Equation 7",ylab="Var(u) calculated by λK (λ = 1.076)")
