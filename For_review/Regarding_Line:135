@@ -48,7 +48,7 @@
   env1 <- t(env1)
   env1 <- as.factor(env1)
 
-  x   <- model.matrix(~1 + env1)
+  x   <- model.matrix(~env1 - 1)
 
   write.table(dat[,which(colnames(dat) == id[1])],"./Processed_data/y.csv",row.names=F,col.names=F,sep=",",quote=FALSE)      
   write.table(dat[,which(colnames(dat) == id[2])],"./Processed_data/Z_h.csv",row.names=F,col.names=F,sep=",",quote=FALSE)
