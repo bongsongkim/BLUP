@@ -67,7 +67,7 @@
   w2  <- t(z)%*%y                                    
 
   m.y <- as.matrix(rep(mean(y),dim(y)[1])) 
-  kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) / dim(ginv(t(z) %*% z) %*% t(z) %*% (y - m.y))[1]
+  kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) 
 
   ki  <- ginv(kk)
   c22_i <- ginv(c22)
