@@ -58,7 +58,7 @@
   m.y <- as.matrix(rep(mean(y),dim(y)[1])) 
   kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z)))
 
-  u = ginv(t(z) %*% z) %*% t(z) %*% y
+  u = ginv(t(z) %*% z) %*% t(z) %*% (y - mean(y))
 
   u  <- cbind(sort(t(unique(z_h))),u)
   colnames(u) <- c("ID","Breeding values")
