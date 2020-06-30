@@ -74,7 +74,7 @@
 
   print(kk[1:5,1:5])
 
-  u <- ginv(c22 + ki - c21 %*% ginv(c11) %*% c12) %*% (w2 - c21 %*% ginv(c11) %*% w1)
+  u <- ginv(c22 + ki - c21 %*% ginv(c11) %*% c12) %*% (w2 - c21 %*% ginv(c11) %*% w1)/(length(y) - 1)
   b <- ginv(c11) %*% (w1 - c12 %*% u)
 
   u  <- cbind(sort(t(unique(z_h))),u)
