@@ -56,7 +56,7 @@
   w2  <- t(z)%*%y                                    
 
   m.y <- as.matrix(rep(mean(y),dim(y)[1])) 
-  kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z)))/length(y)
+  kk  <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z)))/(length(y) - 1)
 
   u = ginv(t(z) %*% z) %*% t(z) %*% (y)
 
