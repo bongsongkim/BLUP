@@ -27,4 +27,4 @@
        vec_1[cnt] <- naive_var_cov[i,j]
        vec_2[cnt] <- k_blup_var_cov[i,j]
   }}
-  plot(vec_1,vec_2,xlab="The objective variance-covariance values",ylab="The assumed variance-covariance values")
+  plot(vec_1,vec_2,xlab="The objective variance-covariance matrix",ylab="The assumed variance-covariance matrix")
