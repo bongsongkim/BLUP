@@ -10,7 +10,7 @@
   y  <- as.matrix(as.numeric(read.csv("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/pheno.csv",header=T)[,3]))   # phenotypic vector
   m.y <- as.matrix(rep(mean(y),dim(y)[1]))                       # a vector containing the phenotypic averages
 
-  naive_var_cov <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) / dim(ginv(t(z) %*% z) %*% t(z) %*% (y - m.y))[1]
+  naive_var_cov <- (ginv(t(z) %*% z) %*% t(z) %*% (y - m.y) %*% t(y - m.y) %*% (z %*% ginv(t(z) %*% z))) / (dim(ginv(t(z) %*% z) %*% t(z) %*% (y - m.y))[1] - 1)
    # kk = a kinship matrix of the Naive-BLUP
 
 #  var_cov <- read.csv(text=getURL("https://raw.githubusercontent.com/bongsongkim/BLUP/master/raw_data/variance-covariance.csv"),row.names=1)
